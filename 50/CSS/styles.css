@@ -1,0 +1,152 @@
+:root {
+  --bg-top: #b8c8d2;
+  --bg-mid: #d8d7c6;
+  --bg-bottom: #f0c46a;
+  --text: #2f3438;
+  --muted: #3c3f42;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 54%, var(--bg-bottom) 100%);
+}
+
+.page {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 58px 26px 26px;
+}
+
+.hero {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.9rem);
+  line-height: 1.08;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  font-size: clamp(0.95rem, 1.15vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 146px;
+  height: 48px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 2.05fr 1.25fr;
+  grid-template-rows: 200px 200px;
+  grid-template-areas:
+    "card1 card2 main card4"
+    "wave wave main card6";
+}
+
+.card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card p,
+.card h2 {
+  position: absolute;
+  z-index: 2;
+  color: #202326;
+}
+
+.card p {
+  left: 12px;
+  bottom: 12px;
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+.card h2 {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.card-1 { grid-area: card1; }
+.card-2 { grid-area: card2; }
+.card-main { grid-area: main; }
+.card-4 { grid-area: card4; }
+.card-wave { grid-area: wave; }
+.card-6 { grid-area: card6; }
+
+.card-main h2 {
+  top: 16px;
+  right: 16px;
+}
+
+.card-wave h2 {
+  top: 12px;
+  left: 12px;
+}
+
+@media (max-width: 980px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 180px 260px 180px;
+    grid-template-areas:
+      "card1 card2"
+      "card4 card6"
+      "main main"
+      "wave wave";
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 32px 14px 16px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 180px);
+    grid-template-areas:
+      "card1"
+      "card2"
+      "main"
+      "card4"
+      "wave"
+      "card6";
+  }
+}
