@@ -4,7 +4,7 @@ Este repositorio contiene múltiples páginas estáticas organizadas por carpeta
 Cada carpeta representa una maqueta independiente.
 
 ## Objetivo del proyecto
-- Reescribir y ajustar páginas HTML/CSS manteniendo la apariencia esperada.
+- Reescribir y volver hacer la pagina web requerida tal y como esta, sin perder si originalidad.
 - Respetar la estructura base por carpeta.
 - Garantizar diseño responsivo sin romper el diseño original.
 
@@ -30,12 +30,9 @@ Ejemplo:
 6. Entregar el código final para copiar/pegar.
 
 ## Reglas de edición
-- No modificar carpetas ajenas a la solicitada.
-- No renombrar archivos existentes.
 - Mantener rutas relativas de imágenes y CSS.
-- Si se pide “solo reescribir HTML”, no alterar estilos ni contenido.
-- Si se pide ajuste visual, priorizar mantener el diseño original.
 - Evitar agregar dependencias nuevas sin necesidad.
+- Aplicar los temas vistos en clase y los diferentes tipos de diseño y formas para recrear correctamente la pagina.
 
 ## Checklist por entrega
 - `index.html` válido (estructura completa con `<!DOCTYPE html>`, `head`, `body`).
