@@ -60,4 +60,4 @@ Ejemplo:
 - Camilo Andres Garcia Almeida
 
 ## Repositorio grupal :
-https://github.com/santiagoosorio0708e-wq/landingpages.git
+
