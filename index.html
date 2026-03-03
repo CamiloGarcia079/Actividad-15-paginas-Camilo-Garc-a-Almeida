@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú de Páginas</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --accent: #0f766e;
+      --accent-hover: #115e59;
+      --border: #d1d5db;
+      --error: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #dbeafe, var(--bg));
+      color: var(--text);
+      padding: 24px;
+    }
+
+    .menu {
+      width: min(560px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .opt-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .opt-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button.go {
+      border: none;
+      background: var(--accent);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button.go:hover {
+      background: var(--accent-hover);
+    }
+
+    .error {
+      min-height: 20px;
+      color: var(--error);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="menu">
+    <h1>Menú de páginas</h1>
+    <p>Escribe el número de la página que quieres abrir.</p>
+
+    <div class="options" id="options"></div>
+
+    <div class="input-row">
+      <input id="pageInput" type="number" inputmode="numeric" placeholder="Ejemplo: 10" />
+      <button class="go" id="openBtn" type="button">Abrir</button>
+    </div>
+
+    <p class="error" id="error"></p>
+  </main>
+
+  <script>
+    const availablePages = [3, 4, 6, 10, 11, 12, 14, 15, 22, 33, 38, 40, 41, 45, 50];
+
+    const optionsContainer = document.getElementById('options');
+    const input = document.getElementById('pageInput');
+    const openBtn = document.getElementById('openBtn');
+    const error = document.getElementById('error');
+
+    function openPage(number) {
+      if (!availablePages.includes(number)) {
+        error.textContent = 'Ese número no existe. Opciones válidas: ' + availablePages.join(', ');
+        return;
+      }
+
+      error.textContent = '';
+      window.location.href = `${number}/index.html`;
+    }
+
+    availablePages.forEach((num) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'opt-btn';
+      button.textContent = num;
+      button.addEventListener('click', () => openPage(num));
+      optionsContainer.appendChild(button);
+    });
+
+    openBtn.addEventListener('click', () => {
+      const number = Number(input.value.trim());
+      openPage(number);
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const number = Number(input.value.trim());
+        openPage(number);
+      }
+    });
+  </script>
+</body>
+</html>
